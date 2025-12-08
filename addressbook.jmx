@@ -231,7 +231,7 @@
                 </elementProp>
                 <elementProp name="firstname" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">Asajj</stringProp>
+                  <stringProp name="Argument.value">Asajj_${Rand_name}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">firstname</stringProp>
@@ -394,10 +394,11 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Filter contact by the groupe">
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
-          <stringProp name="HTTPSampler.path">?group=Force%20Users+${Rand_var}</stringProp>
+          <stringProp name="HTTPSampler.path">?group=Force+Users%2B${Rand_var}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
           <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
             <collectionProp name="Arguments.arguments"/>
@@ -449,7 +450,7 @@
                 </elementProp>
                 <elementProp name="firstname" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">Asajj</stringProp>
+                  <stringProp name="Argument.value">Asajj_${Rand_name}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">firstname</stringProp>
@@ -659,12 +660,21 @@
         </HTTPSamplerProxy>
         <hashTree/>
         <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable">
-          <stringProp name="maximumValue">1000</stringProp>
+          <stringProp name="maximumValue">100000</stringProp>
           <stringProp name="minimumValue">1</stringProp>
-          <stringProp name="outputFormat">0</stringProp>
+          <stringProp name="outputFormat">00</stringProp>
           <boolProp name="perThread">false</boolProp>
           <stringProp name="randomSeed"></stringProp>
           <stringProp name="variableName">Rand_var</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable for first name">
+          <stringProp name="variableName">Rand_name</stringProp>
+          <stringProp name="outputFormat"></stringProp>
+          <stringProp name="minimumValue">100</stringProp>
+          <stringProp name="maximumValue">999</stringProp>
+          <stringProp name="randomSeed"></stringProp>
+          <boolProp name="perThread">false</boolProp>
         </RandomVariableConfig>
         <hashTree/>
       </hashTree>
